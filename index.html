@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCSC Students Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        header {
+            background-color: #004d99;
+            color: #fff;
+            padding: 20px 0;
+        }
+        header h1 {
+            text-align: center;
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+        #news-events {
+            margin: 20px 0;
+        }
+        #news-events h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #contact {
+            background-color: #f4f4f4;
+            padding: 20px 0;
+        }
+        #contact h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .carousel-item {
+            display: none;
+            width: 100%;
+        }
+        .carousel-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .carousel-item.active {
+            display: block;
+        }
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-controls button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+        }
+        .carousel-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>TCSC Students Guide</h1><br><br>
+            <nav>
+                <ul>
+                    <li><a href="campus.html">Campus Resource</a></li>
+                    <li><a href="dptinfo.html">Teachers</a></li>
+                    <li><a href="event.html">Events AND students shout out</a></li>
+                    <li><a href="self.html">About Us</a></li>
+                    <li><a href="aboutclg.html">About College</a></li>
+                    <li><a href="https://www.instagram.com/_radhikachhangani_">SEND YOUR PICS!</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="news-events">
+        <div class="container">
+            <h3>Thakur College of Science and Commerce</h3>
+            <div class="carousel">
+                <div class="carousel-item active">
+                    <img src="entry.jpg" alt="Entry 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="entry2.jpg" alt="Entry 2">
+                </div>
+                <div class="carousel-controls">
+                    <button onclick="prevSlide()">&#10094;</button>
+                    <button onclick="nextSlide()">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Email Address: <a href="mailto:radhika.chhangani.s13.3251@gmail.com">radhika.chhangani.s13.3251@gmail.com</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/_radhikachhangani_" target="_blank"><i class="fab fa-instagram"></i> _radhikachhangani_</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="https://www.gmail.com/radhika.chhangani.s13.3251" target="_blank"><i class="fab fa-google"></i></a>
+            </div>
+            <p>&copy; CREATED by RADHIKA CHHANGANI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+            setInterval(nextSlide, 3000); // Change slide every 3 seconds
+        });
+    </script>
+</body>
+</html>
